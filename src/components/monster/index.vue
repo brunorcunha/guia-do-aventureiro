@@ -1,6 +1,6 @@
 <template>
   <v-dialog v-model="dialog" scrollable :fullscreen="$vuetify.breakpoint.mobile" max-width="400">
-    <v-card v-if="monster" rounded="lg" outlined :tile="$vuetify.breakpoint.mobile">
+    <v-card v-if="monster" rounded="lg" :outlined="!$vuetify.breakpoint.mobile" :tile="$vuetify.breakpoint.mobile">
       <v-img src="@/assets/bg.jpg" height="200">
         <div class="fill-height" style="position: relative">
           <v-toolbar dense color="transparent" class="flex-grow-0" flat>

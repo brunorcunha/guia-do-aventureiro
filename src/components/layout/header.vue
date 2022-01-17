@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app flat color="transparent">
+  <v-app-bar app flat>
     <v-btn icon @click="drawer = !drawer"><v-icon>bi-list</v-icon></v-btn>
 
     <v-spacer />

@@ -8,6 +8,10 @@ $discord-colors: (
 
 $body-font-family: 'Manrope', serif;
 
+$material-light: (
+  'app-bar': '#FFFFFF'
+);
+
 $material-dark: (
   'app-bar': map-get($discord-colors, '2'),
   'toolbar': map-get($discord-colors, '3'),
