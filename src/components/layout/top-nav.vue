@@ -1,5 +1,5 @@
 <template>
-  <v-btn-toggle v-model="tab" :background-color="color" dense>
+  <v-btn-toggle v-model="tab" :background-color="color" dense dark>
     <v-btn v-for="aba in abas" :key="aba.nome" color="transparent" class="px-6">
       <v-icon left>{{ aba.icon }}</v-icon>
       <span>{{ aba.nome }}</span>
