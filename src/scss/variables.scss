@@ -1,0 +1,18 @@
+$discord-colors: (
+  '0': #484b51,
+  '1': #36393f,
+  '2': #2f3136,
+  '3': #2a2c31,
+  '4': #202225
+);
+
+$body-font-family: 'Manrope', serif;
+
+$material-dark: (
+  'app-bar': map-get($discord-colors, '2'),
+  'toolbar': map-get($discord-colors, '3'),
+  'background': map-get($discord-colors, '2'),
+  'bg-color': map-get($discord-colors, '1'),
+  'cards': map-get($discord-colors, '2'),
+  'navigation-drawer': map-get($discord-colors, '4'),
+);

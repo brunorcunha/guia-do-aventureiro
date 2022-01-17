@@ -1,0 +1,62 @@
+@import 'variables';
+
+h1, .fontComforter {
+  font-family: 'Comforter', cursive;
+  font-weight: normal;
+  color: #fff;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.titulo {
+  font-family: 'Comforter', cursive;
+  font-weight: normal;
+  color: #fff;
+  font-size: 3em;
+  line-height: 0.7em;
+}
+
+.theme--light h1, .theme--light .fontComforter , .theme--light .titulo {
+  color: #333 !important;
+}
+
+.scrollimg {
+  overflow-x: scroll;
+}
+.scrollimg img {
+  display: block;
+}
+
+#painelBG {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.theme--dark.v-application {
+  color: #dcddde !important;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-track {
+  background: #202225;
+  border-left: 1px solid #2c2c2c;
+}
+::-webkit-scrollbar-thumb {
+  background: #2f3136;
+  border: solid 3px #202020;
+  border-radius: 7px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #36393f;
+}
+::-webkit-scrollbar-corner {
+  background: #161616;
+}
