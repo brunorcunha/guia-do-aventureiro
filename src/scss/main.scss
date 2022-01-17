@@ -42,21 +42,42 @@ h1, .fontComforter {
   color: #dcddde !important;
 }
 
+/** SCROLL LIGHT **/
 ::-webkit-scrollbar {
   width: 15px;
 }
 ::-webkit-scrollbar-track {
+  background: #e6e6e6;
+  border-left: 1px solid #dadada;
+}
+::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border: solid 3px #e6e6e6;
+  border-radius: 7px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+::-webkit-scrollbar-corner {
+  background: #bbb;
+}
+
+/** SCROLL DARK **/
+.theme--dark ::-webkit-scrollbar {
+  width: 15px;
+}
+.theme--dark ::-webkit-scrollbar-track {
   background: #202225;
   border-left: 1px solid #2c2c2c;
 }
-::-webkit-scrollbar-thumb {
+.theme--dark ::-webkit-scrollbar-thumb {
   background: #2f3136;
   border: solid 3px #202020;
   border-radius: 7px;
 }
-::-webkit-scrollbar-thumb:hover {
+.theme--dark ::-webkit-scrollbar-thumb:hover {
   background: #36393f;
 }
-::-webkit-scrollbar-corner {
+.theme--dark ::-webkit-scrollbar-corner {
   background: #161616;
 }
