@@ -10,7 +10,7 @@
   expires: Thu, 01 Jan 1970 00:00:01 GMT
   cache-control: no-cache, no-store, max-age=0, must-revalidate
 
-/*
+/*js
   Content-Security-Policy: default-src * data: blob: ws: wss: gap://ready file://*;style-src * 'unsafe-inline' 'unsafe-eval';script-src * 'unsafe-inline' 'unsafe-eval';connect-src * 'unsafe-inline';img-src * data: blob: 'unsafe-inline';worker-src 'self' 'unsafe-inline' * blob:;frame-src *; always
   Referrer-Policy: strict-origin
   Permissions-Policy: autoplay=(), geolocation=(), accelerometer=(), fullscreen=(self)
