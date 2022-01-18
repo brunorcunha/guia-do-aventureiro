@@ -4,6 +4,12 @@ import vuetify from './plugins/vuetify';
 import router from './router';
 import store from './store';
 import './registerServiceWorker';
+import VueHead from 'vue-head';
+
+Vue.use(VueHead, {
+  separator: '◉',
+  complement: 'Guia do Aventureiro'
+});
 
 Vue.config.productionTip = false;
 

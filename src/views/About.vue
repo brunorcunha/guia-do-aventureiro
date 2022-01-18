@@ -46,6 +46,11 @@
 import PageTitle from '@/components/layout/page-title';
 
 export default {
-  components: { PageTitle }
+  components: { PageTitle },
+  head: {
+    title: {
+      inner: 'Sobre'
+    }
+  }
 };
 </script>

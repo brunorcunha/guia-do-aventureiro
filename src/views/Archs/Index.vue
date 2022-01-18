@@ -1,21 +1,23 @@
 <template>
-  <v-tabs-items v-model="tab" touchless>
-    <v-tab-item>
-      <ArchsList />
-    </v-tab-item>
+  <div>
+    <v-tabs-items v-model="tab" touchless>
+      <v-tab-item>
+        <ArchsList />
+      </v-tab-item>
 
-    <v-tab-item>
-      <ArchsInfo />
-    </v-tab-item>
+      <v-tab-item>
+        <ArchsInfo />
+      </v-tab-item>
 
-    <v-tab-item>
-      <ArchsQuest />
-    </v-tab-item>
+      <v-tab-item>
+        <ArchsQuest />
+      </v-tab-item>
 
-    <v-tab-item>
-      <ArchsMoon />
-    </v-tab-item>
-  </v-tabs-items>
+      <v-tab-item>
+        <ArchsMoon />
+      </v-tab-item>
+    </v-tabs-items>
+  </div>
 </template>
 
 <script>
@@ -43,6 +45,11 @@ export default {
   },
   beforeDestroy() {
     this.abas = [];
+  },
+  head: {
+    title: {
+      inner: 'Arquimonstros'
+    }
   }
 };
 </script>

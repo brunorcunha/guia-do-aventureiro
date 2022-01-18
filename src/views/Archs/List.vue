@@ -16,7 +16,7 @@
 
     <v-virtual-scroll :items="archList" :item-height="62" :height="listHeight">
       <template #default="{ item }">
-        <v-list-item :key="item.id" color="primary" @click="$monsterDialog.open(item)">
+        <v-list-item :key="item.id" color="primary" :to="`/monstro/${item.id}`">
           <v-list-item-avatar tile>
             <ImageFallback
               contain

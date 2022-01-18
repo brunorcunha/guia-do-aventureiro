@@ -12,7 +12,6 @@
     </v-main>
 
     <BottomNav v-if="$vuetify.breakpoint.mobile" />
-    <Monster ref="monsterDialog" />
   </v-app>
 </template>
 
@@ -23,12 +22,11 @@ import BottomNav from '@/components/layout/bottom-nav';
 import MenuList from '@/components/layout/menu-list';
 import Configs from '@/components/layout/configs';
 import Header from '@/components/layout/header';
-import Monster from '@/components/monster';
 import { sync } from 'vuex-pathify';
 
 export default {
   name: 'DefaultLayout',
-  components: { Monster, Header, MenuList, Configs, BottomNav },
+  components: { Header, MenuList, Configs, BottomNav },
   computed: {
     darkTheme: sync('persistent/darkTheme')
   },
@@ -36,7 +34,6 @@ export default {
     this.$vuetify.theme.dark = this.darkTheme;
   },
   mounted() {
-    Vue.prototype.$monsterDialog = this.$refs.monsterDialog;
     Vue.prototype.$eventBus = eventBus;
   }
 };
