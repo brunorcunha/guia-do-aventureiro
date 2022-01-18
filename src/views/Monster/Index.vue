@@ -102,7 +102,8 @@ export default {
   name: 'Monster',
   data: () => ({
     dialog: true,
-    monster: null
+    monster: null,
+    fromRoute: null
   }),
   computed: {
     id() {
@@ -122,6 +123,11 @@ export default {
       return false;
     }
   },
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      vm.fromRoute = from;
+    });
+  },
   mounted() {
     this.monster = archs.find((e) => e.id === this.id);
     this.$emit('updateHead');
@@ -133,7 +139,11 @@ export default {
       });
     },
     fechar() {
-      this.$router.go(-1);
+      if (!this.fromRoute.name) {
+        this.$router.push('/');
+      } else {
+        this.$router.back();
+      }
     }
   },
   head: {
