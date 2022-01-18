@@ -2,7 +2,8 @@ import { make } from 'vuex-pathify';
 
 const state = {
   drawer: false,
-  drawerRight: false
+  drawerRight: false,
+  loadingPage: false
 };
 
 const getters = make.getters(state);

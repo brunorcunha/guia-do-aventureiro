@@ -25,7 +25,10 @@
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title>{{ item.name['pt'] }}</v-list-item-title>
-            <v-list-item-subtitle>Nível {{ item.level_min }} à {{ item.level_max }}</v-list-item-subtitle>
+            <v-list-item-subtitle>
+              Nível {{ item.level_min }}
+              <template v-if="item.level_min !== item.level_max">à {{ item.level_max }}</template>
+            </v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-divider />

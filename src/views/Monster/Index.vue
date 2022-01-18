@@ -55,7 +55,11 @@
             />
             <h1 class="text-h5">{{ monster.name.pt }}</h1>
           </div>
-          <h2 class="body-1 font-weight-light ml-7">Nível {{ monster.level_min }} à {{ monster.level_max }}</h2>
+          <h2 class="body-1 font-weight-light ml-7">
+            Nível {{ monster.level_min }}
+            <template v-if="monster.level_min !== monster.level_max">à {{ monster.level_max }}</template>
+          </h2>
+          <h2 v-if="monster.arch" class="body-1 font-weight-light ml-7 amber--text">Arquimonstro</h2>
 
           <div v-if="!!(monster.location || []).length" class="mt-4">
             <h3 class="body-1">Localização:</h3>

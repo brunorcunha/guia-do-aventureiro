@@ -6,6 +6,7 @@
     <Configs />
 
     <v-main>
+      <v-progress-linear v-if="loadingPage" indeterminate color="accent" />
       <v-slide-x-transition mode="out-in">
         <router-view />
       </v-slide-x-transition>
@@ -28,7 +29,8 @@ export default {
   name: 'DefaultLayout',
   components: { Header, MenuList, Configs, BottomNav },
   computed: {
-    darkTheme: sync('persistent/darkTheme')
+    darkTheme: sync('persistent/darkTheme'),
+    loadingPage: sync('app/loadingPage')
   },
   created() {
     this.$vuetify.theme.dark = this.darkTheme;
