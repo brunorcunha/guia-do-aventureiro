@@ -129,8 +129,6 @@ export default {
   methods: {
     share() {
       window.navigator.share({
-        title: this.monster.name.pt,
-        text: this.monster.name.pt,
         url: `https://guiawakfu.netlify.app/monstro/${this.monster.id}`
       });
     },
