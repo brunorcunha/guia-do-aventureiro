@@ -34,6 +34,11 @@ export default {
     tab: sync('bottomNav/tab'),
     abas: sync('bottomNav/abas')
   },
+  watch: {
+    tab() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  },
   mounted() {
     this.abas = [
       { nome: 'Arquis', icon: 'bi-list-stars' },
