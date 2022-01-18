@@ -17,14 +17,18 @@
         </v-list-item>
       </v-list-item-group>
     </v-list>
+
+    <InstallPwa />
   </v-navigation-drawer>
 </template>
 
 <script>
 import { sync } from 'vuex-pathify';
+import InstallPwa from '@/components/layout/install-pwa';
 
 export default {
   name: 'MenuList',
+  components: { InstallPwa },
   data: () => ({
     items: [
       { icon: 'bi-grid-3x3-gap-fill', title: 'Tela Inicial', to: '/' },
