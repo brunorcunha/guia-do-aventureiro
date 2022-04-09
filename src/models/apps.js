@@ -9,7 +9,7 @@ const menu = [
   { name: 'Fichas', path: '/fichas', icon: '64929023', width: 64 },
   { name: 'Emotes', path: '/emotes', icon: 'emote_1', width: 64, rand: 25 },
   { name: 'Títulos', path: '/titulos', icon: 'coliseum', width: 45 },
-  { name: 'Receitas', path: '/receitas', icon: 'icon_04', width: 51 },
+  // { name: 'Receitas', path: '/receitas', icon: 'icon_04', width: 51 },
   { name: 'Ferramentas', path: '/ferramentas', icon: 'stats', width: 51 },
   { name: 'Sobre', path: '/sobre', icon: 'sobre', width: 42 }
 ];
