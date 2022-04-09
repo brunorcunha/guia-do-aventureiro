@@ -77,14 +77,14 @@
                 <ImageFallback
                   v-if="area.protector"
                   :src="[
-                    `${$baseURL}/npc/protector${area.protector.gfx}.png`,
-                    `${$baseURL}/protectors/${area.protector.gfx}_0.png`,
-                    `${$baseURL}/npc/default.png`
+                    `${$baseURL}/interactiveDialog/protector${area.protector.gfx}.png`,
+                    `${$baseURL}/static/protectors/${area.protector.gfx}_0.png`,
+                    `${$baseURL}/interactiveDialog/default.png`
                   ]"
                 >
-                  <img :src="`${$baseURL}/npc/default.png`" alt="" />
+                  <img :src="`${$baseURL}/interactiveDialog/default.png`" alt="" />
                 </ImageFallback>
-                <v-img v-else :src="`${$baseURL}/npc/default.png`" />
+                <v-img v-else :src="`${$baseURL}/interactiveDialog/default.png`" />
               </v-list-item-avatar>
               <v-list-item-content>
                 <v-list-item-title>{{ area.name }}</v-list-item-title>

@@ -11,9 +11,9 @@
 
         <div id="painelBG" class="d-flex justify-center flex-grow-1 align-center">
           <img
-            :src="`${$baseURL}/npc/protector${protector.gfx}.png`"
+            :src="`${$baseURL}/interactiveDialog/protector${protector.gfx}.png`"
             alt=""
-            @error="$event.target.src = `${$baseURL}/npc/default.png`"
+            @error="$event.target.src = `${$baseURL}/interactiveDialog/default.png`"
           />
         </div>
       </div>
@@ -28,7 +28,7 @@
 
       <div class="pt-2">
         <div class="d-flex align-center mb-4">
-          <img :src="`${$baseURL}/protectors/${protector.gfx}_0.png`" alt="" class="mr-2" />
+          <img :src="`${$baseURL}/static/protectors/${protector.gfx}_0.png`" alt="" class="mr-2" />
           <div>
             <h1 class="text-h5">{{ protector.name }}</h1>
             <p class="body-2 mb-0" @click="$router.push(`/territorio/${territory.id}`)">
@@ -59,7 +59,7 @@
           <template v-for="flora in protector.flora_will">
             <v-list-item :key="flora.kind_id">
               <v-list-item-avatar size="36">
-                <img :src="`${$baseURL}/icons/flora_${flora.kind_id}.png`" alt="" />
+                <img :src="`${$baseURL}/static/flora_${flora.kind_id}.png`" alt="" />
               </v-list-item-avatar>
               <v-list-item-content>
                 <v-list-item-title>

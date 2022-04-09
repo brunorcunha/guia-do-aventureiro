@@ -19,10 +19,10 @@
             :src="[
               `https://static.ankama.com/wakfu/portal/game/monster/200/${monster.gfx}.png`,
               `https://github.com/brunorcunha/discord-wakfu/raw/main/assets/monster/png/${monster.id}.png`,
-              `${$baseURL}/npc/default.png`
+              `${$baseURL}/interactiveDialog/default.png`
             ]"
           >
-            <img :src="`${$baseURL}/npc/default.png`" alt="" />
+            <img :src="`${$baseURL}/interactiveDialog/default.png`" alt="" />
           </ImageFallback>
         </div>
       </div>
