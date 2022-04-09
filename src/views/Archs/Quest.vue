@@ -6,7 +6,7 @@
       <img src="https://raw.githubusercontent.com/brunorcunha/discord-wakfu/main/assets/npc/npc4573.png" alt="" />
     </div>
 
-    <p>
+    <p class="body-1">
       Depois de completar a quest da <strong>Confraria</strong>, você pode completar a quest
       <strong>"Miniarqui e os Arquis"</strong> de Ruel localizado em Astrub.
     </p>
@@ -24,15 +24,15 @@
 
     <SliderImage src="https://methodwakfu.com/wp-content/uploads/2019/10/Ruel-2.png" />
 
-    <p>
+    <p class="body-1">
       A quest inclui nada menos que 56 missões que pedirão para você matar um arquimonstro do seu nível ou menor, até
       que você tenha lutado com todos os arquimonstros do jogo pelo menos uma vez.
     </p>
-    <p>
+    <p class="body-1">
       Cada missão lhe dará experiência, e também marcará o nível da missão. A cada 5 missões desta série de 40, você
       ganhará um título e receitas para novos equipamentos.
     </p>
-    <p>Você tem uma semana para fazer a quest e, se conseguir, pode solicitar uma nova imediatamente.</p>
+    <p class="body-1">Você tem uma semana para fazer a quest e, se conseguir, pode solicitar uma nova imediatamente.</p>
 
     <v-alert color="info" border="left" text dense>
       O arquimonstro solicitado é aleatório entre todos aqueles abaixo do nível do herói que ainda não foram concluídos.
@@ -59,7 +59,7 @@
 
 <script>
 import PageTitle from '@/components/layout/page-title';
-import SliderImage from '@/components/layout/SliderImage';
+import SliderImage from '@/components/image/SliderImage';
 
 export default {
   name: 'ArchsQuest',

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="mostrar" class="mb-4 scrollimg d-flex justify-center">
+  <div v-if="mostrar" class="mb-4 scrollimg">
     <img :src="src" alt="" @error="error" />
   </div>
 </template>

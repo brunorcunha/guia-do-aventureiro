@@ -3,7 +3,7 @@
     <page-title>Sobre o App</page-title>
 
     <p>
-      O APP <strong>Guia do Aventureiro - Wakfu</strong> foi criado por fãs apaixonados que jogam a muito tempo e reune
+      O APP <strong>Guia do Aventureiro - Wakfu</strong> foi criado por um fã apaixonado que joga a muito tempo e reune
       informações, ferramentas e guias para os jogadores durante sua aventura no MMO Wakfu.
     </p>
 

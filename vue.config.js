@@ -29,7 +29,7 @@ module.exports = {
       short_name: 'Guia do Aventureiro',
       start_url: '.',
       description:
-        'O Guia do Aventureiro foi criado por fãs e reune informações, ferramentas e guias para os jogadores durante sua aventura no MMO Wakfu.',
+        'O Guia do Aventureiro foi criado por um fã e reune informações, ferramentas e guias para os jogadores durante sua aventura no MMO Wakfu.',
       orientation: 'portrait',
       themeColor: '#009688',
       icons: [

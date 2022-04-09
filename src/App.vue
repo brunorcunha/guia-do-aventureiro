@@ -7,9 +7,9 @@
 
     <v-main>
       <v-progress-linear v-if="loadingPage" indeterminate color="accent" />
-      <v-slide-x-transition mode="out-in">
+      <v-slide-y-reverse-transition mode="out-in">
         <router-view />
-      </v-slide-x-transition>
+      </v-slide-y-reverse-transition>
     </v-main>
 
     <BottomNav v-if="$vuetify.breakpoint.mobile" />
@@ -36,7 +36,40 @@ export default {
     this.$vuetify.theme.dark = this.darkTheme;
   },
   mounted() {
+    Vue.prototype.$baseURL = process.env.VUE_APP_BASE_URL;
     Vue.prototype.$eventBus = eventBus;
+
+    Vue.prototype.$itemRarityClassText = (item) => this.itemRarityClass(item) + '--text';
+    Vue.prototype.$itemRarityClass = this.itemRarityClass;
+
+    Vue.prototype.$monsterRarityClassText = (item) => this.monsterRarityClass(item) + '--text';
+    Vue.prototype.$monsterRarityClass = this.monsterRarityClass;
+  },
+  methods: {
+    monsterRarityClass(item) {
+      if (item.arch) return 'rarity-2';
+      if (item.boss) return 'rarity-3';
+      if (item.horda) return 'rarity-1';
+      if (item.ub) return 'rarity-6';
+      return 'rarity-0';
+    },
+    itemRarityClass(item) {
+      switch (item.rarity) {
+        case 2:
+          return 'rarity-1';
+        case 3:
+          return 'rarity-2';
+        case 4:
+          return 'rarity-3';
+        case 5:
+          return 'rarity-4';
+        case 6:
+          return 'rarity-5';
+        case 7:
+          return 'rarity-6';
+      }
+      return 'rarity-0';
+    }
   }
 };
 </script>

@@ -6,36 +6,35 @@
     </div>
 
     <v-row class="mx-n2">
-      <v-col cols="3">
-        <ButtonApp />
+      <v-col v-for="app in apps" :key="app.path" cols="3">
+        <ButtonApp
+          :name="app.name"
+          :path="app.path"
+          :bg="app.bg"
+          :icon="app.icon"
+          :width="app.width"
+          :rand="app.rand"
+        />
       </v-col>
-      <v-col cols="3"></v-col>
-      <v-col cols="3"></v-col>
-      <v-col cols="3"></v-col>
-
-      <v-col cols="3"></v-col>
-      <v-col cols="3"></v-col>
-      <v-col cols="3"></v-col>
-      <v-col cols="3"></v-col>
-
-      <v-col cols="3"></v-col>
-      <v-col cols="3"></v-col>
-      <v-col cols="3"></v-col>
-      <v-col cols="3"></v-col>
-
-      <v-col cols="3"></v-col>
-      <v-col cols="3"></v-col>
-      <v-col cols="3"></v-col>
-      <v-col cols="3"></v-col>
     </v-row>
+
+    <Rss />
   </v-container>
 </template>
 
 <script>
+import apps from '@/models/apps';
 import ButtonApp from '@/components/dashboard/button';
+import Rss from '../components/dashboard/rss';
 
 export default {
   name: 'Home',
-  components: { ButtonApp }
+  components: { Rss, ButtonApp },
+  data: () => ({
+    apps
+  }),
+  beforeRouteEnter(to, from, next) {
+    next(() => window.twttr?.widgets?.load());
+  }
 };
 </script>

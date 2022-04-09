@@ -1,8 +1,11 @@
 <template>
   <v-bottom-navigation v-model="tab" :background-color="color" :input-value="ativo" shift app grow dark>
     <v-btn v-for="aba in abas" :key="aba.nome" height="56" color="transparent">
-      <span>{{ aba.nome }}</span>
-      <v-icon>{{ aba.icon }}</v-icon>
+      <img v-if="aba.img" :src="aba.img" alt="" class="img" />
+      <template v-else>
+        <span>{{ aba.nome }}</span>
+        <v-icon>{{ aba.icon }}</v-icon>
+      </template>
     </v-btn>
   </v-bottom-navigation>
 </template>
@@ -23,11 +26,11 @@ export default {
         case 0:
           return '#3437C6';
         case 1:
-          return '#813BAD';
-        case 2:
-          return '#DA1F56';
-        case 3:
           return '#F79733';
+        case 2:
+          return '#813BAD';
+        case 3:
+          return '#DA1F56';
         default:
           return '#F1B928';
       }
