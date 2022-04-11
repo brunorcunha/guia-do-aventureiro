@@ -39,10 +39,28 @@
         <h2 v-if="item.lvl" class="body-1 font-weight-light ml-11">Nível {{ item.lvl }}</h2>
       </div>
 
+      <template v-if="receitaReferencia">
+        <h2 class="text-h6 my-1">Receita do item</h2>
+
+        <v-card outlined rounded="lg" class="mb-4 mt-2">
+          <v-list-item :to="`/item/${receitaReferencia.id}`">
+            <v-list-item-avatar tile class="my-1 mr-4">
+              <img :src="`${$baseURL}/items/${receitaReferencia.gfx}.png`" alt="" />
+            </v-list-item-avatar>
+
+            <v-list-item-content class="py-0" style="z-index: 1">
+              <v-list-item-title :class="$itemRarityClassText(receitaReferencia) + ' d-flex align-center'">
+                {{ receitaReferencia.name }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
+      </template>
+
       <template v-if="referenciaReceita">
         <h2 class="text-h6 my-1">Item da Receita</h2>
 
-        <v-card outlined rounded="lg" class="mb-1 mt-2">
+        <v-card outlined rounded="lg" class="mb-4 mt-2">
           <v-list-item :to="`/item/${referenciaReceita.id}`">
             <v-list-item-avatar tile class="my-1 mr-4">
               <img :src="`${$baseURL}/items/${referenciaReceita.gfx}.png`" alt="" />
@@ -313,6 +331,11 @@ export default {
       const i = this.receitaCraft.find((e) => e.item_id === this.item.id);
       if (!i) return null;
       return itemsModel.find((e) => e.id === i.result.item_id);
+    },
+    receitaReferencia() {
+      const i = this.receitaCraft.find((e) => e.result.item_id === this.item.id);
+      if (!i) return null;
+      return itemsModel.find((e) => e.id === i.item_id);
     },
     colheitas() {
       if (!this.item) return null;
