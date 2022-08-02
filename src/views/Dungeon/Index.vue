@@ -58,8 +58,8 @@
                   <v-list-item-content class="py-0" style="z-index: 1">
                     <v-list-item-title>{{ monster.name }}</v-list-item-title>
                     <v-list-item-subtitle>
-                      Nível {{ monster.level_min }}
-                      <template v-if="monster.level_max"> à {{ monster.level_max }}</template>
+                      Nível {{ monster.minLvl }}
+                      <template v-if="monster.maxLvl"> à {{ monster.maxLvl }}</template>
                     </v-list-item-subtitle>
                   </v-list-item-content>
                 </v-list-item>
@@ -115,10 +115,10 @@ export default {
       return false;
     },
     localizacao() {
-      return territoriesModel.filter((e) => e.id === this.dungeon.territory);
+      return territoriesModel.filter((e) => e.id === this.dungeon.idTerritory);
     },
     bosses() {
-      return monsters.filter((m) => (m.boss || m.ub) && m.family_id === this.dungeon.boss_family);
+      return monsters.filter((m) => (m.idBoss || m.idUb) && m.idFamily === this.dungeon.idBossFamily);
     },
     crupie() {
       if (!this.dungeon.idCrupie) return null;

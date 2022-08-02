@@ -37,7 +37,7 @@
 
       <div class="d-flex align-center">
         <img
-          :src="`https://github.com/brunorcunha/discord-wakfu/raw/main/assets/monstersFamily/${monster.family_id}.png`"
+          :src="`https://github.com/brunorcunha/discord-wakfu/raw/main/assets/monstersFamily/${monster.idFamily}.png`"
           alt=""
           class="ml-n2 mr-2"
           width="32"
@@ -47,8 +47,8 @@
         <h1 class="text-h5 mr-2">{{ monster.name }}</h1>
       </div>
       <h2 class="body-1 font-weight-light ml-8">
-        Nível {{ monster.level_min }}
-        <template v-if="monster.level_max">à {{ monster.level_max }}</template>
+        Nível {{ monster.minLvl }}
+        <template v-if="monster.maxLvl">à {{ monster.maxLvl }}</template>
       </h2>
       <div class="ml-8">
         <h2 v-if="monster.arch" class="body-1 font-weight-light rarity-2--text">Arquimonstro</h2>
@@ -57,7 +57,7 @@
         <h2 v-if="monster.ub" class="body-1 font-weight-light rarity-6--text">Chefe Supremo</h2>
 
         <v-chip v-if="monster.capture" small label outlined color="green" class="mt-1">
-          <img src="@/assets/icon_can_capture.png" class="mr-2" />
+          <img src="@/assets/icon_can_capture.png" class="mr-2" alt="" />
           Capturável
         </v-chip>
       </div>
@@ -135,17 +135,17 @@ export default {
     },
     frequenciaAparecimento() {
       if (!this.monster) return null;
-      if (this.monster.level_min < 60) return 'Toda hora';
-      else if (this.monster.level_min < 145) return 'A cada 2h30';
+      if (this.monster.minLvl < 60) return 'Toda hora';
+      else if (this.monster.minLvl < 145) return 'A cada 2h30';
       else return 'A cada 4 horas';
     },
     localizacao() {
       if (!this.monster.local) return null;
-      return territories.filter((e) => this.monster.local.includes(e.id));
+      return territories.filter((e) => this.monster.loc.includes(e.id));
     },
     dungeons() {
-      if (!this.monster.boss && !this.monster.ub) return null;
-      return dungeonsModel.filter((e) => e.boss_family === this.monster.family_id);
+      if (!this.monster.idBoss && !this.monster.idUb) return null;
+      return dungeonsModel.filter((e) => e.idBossFamily === this.monster.idFamily);
     },
     webShareApiSupported() {
       if (process.browser) return !!navigator.share;

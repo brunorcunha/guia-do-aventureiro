@@ -66,14 +66,14 @@ export default {
     tab: sync('bottomNav/tab'),
     list() {
       return [
-        ...territories.filter((e) => e.protector || (e.areas?.length && e.areas.some((f) => f.monsters?.length)))
+        ...territories.filter((e) => e.idProtector || (e.areas?.length && e.areas.some((f) => f.monsters?.length)))
       ].sort((a, b) => a.name.localeCompare(b.name));
     },
     filteredList() {
       if (!this.search) return this.list;
       const number = parseInt(this.search);
       if (!isNaN(number)) {
-        return this.list.filter((e) => betweenLvls(number, e.level_min, e.level_max));
+        return this.list.filter((e) => betweenLvls(number, e.minLvl, e.maxLvl));
       }
       const search = this.search.toUpperCase();
       return this.list.filter((e) => e.name.toUpperCase().includes(search));

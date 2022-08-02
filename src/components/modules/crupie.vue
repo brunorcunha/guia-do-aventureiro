@@ -5,10 +5,10 @@
     </v-card-title>
     <v-list subheader dense>
       <template v-for="(exchange, index) in crupie.exchanges">
-        <v-list-item v-if="exchange.result.items" :key="index" :to="`/item/${exchange.result.items[0].itemId}`">
+        <v-list-item v-if="exchange.result.items" :key="index" :to="`/item/${exchange.result.items[0].id}`">
           <v-list-item-avatar
             v-for="item in (exchange.result || {}).items"
-            :key="item.itemId"
+            :key="item.id"
             tile
             size="64"
             class="my-1 mr-4"
@@ -19,7 +19,7 @@
           <v-list-item-content class="py-0" style="z-index: 1">
             <v-list-item-title
               v-for="item in (exchange.result || {}).items"
-              :key="item.itemId"
+              :key="item.id"
               :class="$itemRarityClassText(item.item) + ' d-flex align-center'"
             >
               {{ item.item.name }}
@@ -38,7 +38,7 @@
             </v-list-item-subtitle>
             <v-list-item-subtitle
               v-for="item in (exchange.cost || {}).items"
-              :key="item.itemId"
+              :key="item.id"
               class="d-flex align-center font-weight-light"
             >
               <img :src="`${$baseURL}/items/${item.item.gfx}.png`" height="24" alt="" class="mr-1" />
@@ -84,7 +84,7 @@ export default {
                   items: e.cost.items
                     ? e.cost.items.map((i) => ({
                         ...i,
-                        item: itemsModel.find((item) => item.id === i.itemId)
+                        item: itemsModel.find((item) => item.id === i.id)
                       }))
                     : undefined
                 }
@@ -95,7 +95,7 @@ export default {
                   items: e.result.items
                     ? e.result.items.map((i) => ({
                         ...i,
-                        item: itemsModel.find((item) => item.id === i.itemId)
+                        item: itemsModel.find((item) => item.id === i.id)
                       }))
                     : undefined
                 }

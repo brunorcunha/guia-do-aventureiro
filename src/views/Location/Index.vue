@@ -13,9 +13,9 @@
           />
           <h1 class="text-h5">{{ territory.name }}</h1>
         </div>
-        <h2 v-if="level_min" class="body-1 font-weight-light ml-8">
-          Nível {{ level_min }}
-          <template v-if="level_max">à {{ level_max }}</template>
+        <h2 v-if="minLvl" class="body-1 font-weight-light ml-8">
+          Nível {{ minLvl }}
+          <template v-if="maxLvl">à {{ maxLvl }}</template>
         </h2>
 
         <div v-if="false" class="ml-8 mt-2 mb-6">
@@ -72,7 +72,7 @@
           </div>
 
           <div v-for="area in territory.areas" :key="area.id">
-            <v-list-item v-if="area.protector" class="px-0 mt-4" :to="`/protector/${area.protector.id}`">
+            <v-list-item v-if="area.protector" class="px-0 mt-4" :to="`/protector/${area.idProtector}`">
               <v-list-item-avatar tile size="64">
                 <ImageFallback
                   v-if="area.protector"
@@ -111,8 +111,8 @@
                       <v-list-item-content class="py-0" style="z-index: 1">
                         <v-list-item-title>{{ monster.name }}</v-list-item-title>
                         <v-list-item-subtitle>
-                          Nível {{ monster.level_min }}
-                          <template v-if="monster.level_max"> à {{ monster.level_max }}</template>
+                          Nível {{ monster.minLvl }}
+                          <template v-if="monster.maxLvl"> à {{ monster.maxLvl }}</template>
                         </v-list-item-subtitle>
                       </v-list-item-content>
                     </v-list-item>
@@ -127,8 +127,8 @@
                         {{ family.horda.name }}
                       </v-list-item-title>
                       <v-list-item-subtitle>
-                        Nível {{ family.horda.level_min }}
-                        <template v-if="family.horda.level_max">à {{ family.horda.level_max }}</template>
+                        Nível {{ family.horda.minLvl }}
+                        <template v-if="family.horda.maxLvl">à {{ family.horda.maxLvl }}</template>
                       </v-list-item-subtitle>
                     </v-list-item-content>
                   </v-list-item>
@@ -142,7 +142,7 @@
                         {{ family.arch.name }}
                       </v-list-item-title>
                       <v-list-item-subtitle>
-                        Nível {{ family.arch.level_min }} à {{ family.arch.level_max }}
+                        Nível {{ family.arch.maxLvl }} à {{ family.arch.maxLvl }}
                       </v-list-item-subtitle>
                     </v-list-item-content>
                   </v-list-item>
@@ -204,13 +204,13 @@ export default {
     id() {
       return this.$route.params.id ? parseInt(this.$route.params.id) : null;
     },
-    level_min() {
+    minLvl() {
       if (!this.territory?.areas) return null;
-      return this.territory.areas.reduce((ac, item) => Math.min(ac, item.minLevel), 999);
+      return this.territory.areas.reduce((ac, item) => Math.min(ac, item.minLvl), 999);
     },
-    level_max() {
+    maxLvl() {
       if (!this.territory?.areas) return null;
-      return this.territory.areas.reduce((ac, item) => Math.max(ac, item.maxLevel), 0);
+      return this.territory.areas.reduce((ac, item) => Math.max(ac, item.maxLvl), 0);
     },
     webShareApiSupported() {
       if (process.browser) return !!navigator.share;
@@ -218,10 +218,10 @@ export default {
     },
     dungeons() {
       return dungeonsModel
-        .filter((e) => e.territory === this.territory.id)
+        .filter((e) => e.idTerritory === this.territory.id)
         .map((e) => ({
           ...e,
-          boss: monstersModel.find((m) => m.boss && m.family_id === e.family_id)
+          boss: monstersModel.find((m) => m.idBoss && m.idFamily === e.family_id)
         }));
     },
     crupies() {
@@ -239,18 +239,18 @@ export default {
     this.territory.areas.forEach((e) => {
       if (e.monsters) {
         e.monsters = e.monsters.map((f) => {
-          const family_monsters = monstersModel.filter((m) => m.family_id === f);
+          const family_monsters = monstersModel.filter((m) => m.idFamily === f);
           return {
             id: f,
             family: familysModel.find((m) => m.id === f).name,
-            arch: family_monsters.find((m) => m.arch),
-            boss: family_monsters.find((m) => m.boss),
-            horda: family_monsters.find((m) => m.horda),
-            monsters: family_monsters.filter((m) => !m.boss && !m.arch && !m.horda)
+            arch: family_monsters.find((m) => m.idArch),
+            boss: family_monsters.find((m) => m.idBoss),
+            horda: family_monsters.find((m) => m.idHorde),
+            monsters: family_monsters.filter((m) => !m.idBoss && !m.idArch && !m.idHorde)
           };
         });
       }
-      e.protector = protectorsModel.find((f) => f.id === e.protector);
+      e.protector = protectorsModel.find((f) => f.id === e.idProtector);
     });
     this.territory.areas = this.territory.areas.filter((e) => e.monsters || e.protector);
     this.$emit('updateHead');

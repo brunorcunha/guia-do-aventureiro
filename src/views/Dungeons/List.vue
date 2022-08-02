@@ -57,7 +57,7 @@ export default {
       if (!this.search) return this.list;
       const number = parseInt(this.search);
       if (!isNaN(number)) {
-        return this.list.filter((e) => betweenLvls(number, e.level_min, 215));
+        return this.list.filter((e) => betweenLvls(number, e.minLvl, 215));
       }
       const search = this.search.toUpperCase();
       return this.list.filter((e) => (e.name || '').toUpperCase().includes(search));

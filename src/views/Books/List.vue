@@ -43,13 +43,13 @@ export default {
   computed: {
     tab: sync('bottomNav/tab'),
     list() {
-      return items.filter((e) => e.type === 496);
+      return items.filter((e) => e.idType === 496);
     },
     filteredList() {
       if (!this.search) return this.list;
       const number = parseInt(this.search);
       if (!isNaN(number)) {
-        return this.list.filter((e) => betweenLvls(number, e.level_min, e.level_max));
+        return this.list.filter((e) => betweenLvls(number, e.minLvl, e.maxLvl));
       }
       const search = this.search.toUpperCase();
       return this.list.filter((e) => e.name.toUpperCase().includes(search));

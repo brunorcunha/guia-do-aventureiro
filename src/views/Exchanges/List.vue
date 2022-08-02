@@ -57,7 +57,7 @@ export default {
                   items: e.cost.items
                     ? e.cost.items.map((i) => ({
                         ...i,
-                        item: itemsModel.find((item) => item.id === i.itemId)
+                        item: itemsModel.find((item) => item.id === i.id)
                       }))
                     : undefined
                 }
@@ -68,7 +68,7 @@ export default {
                   items: e.result.items
                     ? e.result.items.map((i) => ({
                         ...i,
-                        item: itemsModel.find((item) => item.id === i.itemId)
+                        item: itemsModel.find((item) => item.id === i.id)
                       }))
                     : undefined
                 }

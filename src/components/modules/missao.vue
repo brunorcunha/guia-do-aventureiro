@@ -2,9 +2,9 @@
   <v-list-item v-if="item" :ripple="{ class: 'primary--text' }" @click="open = !open">
     <v-list-item-avatar tile>
       <img
-        :src="`${$baseURL}/achievements/${item.gfx_id}.png`"
+        :src="`${$baseURL}/achievements/${item.gfx}.png`"
         alt=""
-        @error="$event.target.src = `${$baseURL}/achievements/0.png`"
+        @error="$event.target.src = `${$baseURL}/achievements/1.png`"
       />
     </v-list-item-avatar>
     <v-list-item-content>
@@ -24,7 +24,7 @@
         <div v-if="open">
           <Criteria :criterio="item.activation_criterion" />
           <p class="caption grey--text text--lighten-1 my-1" v-html="item.desc" />
-          <v-card v-if="item.goals.length > 0" outlined rounded="lg" class="mt-2">
+          <v-card v-if="(item.goals || []).length > 0" outlined rounded="lg" class="mt-2">
             <v-card-text class="pa-1 caption">
               <ol>
                 <li v-for="(goal, i) in item.goals" :key="`g${i}`">

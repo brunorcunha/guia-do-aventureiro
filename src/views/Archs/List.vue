@@ -21,8 +21,8 @@
           <v-list-item-content class="py-0" style="z-index: 1">
             <v-list-item-title :class="$monsterRarityClassText(item)">{{ item.name }}</v-list-item-title>
             <v-list-item-subtitle>
-              Nível {{ item.level_min }}
-              <template v-if="item.level_max">à {{ item.level_max }}</template>
+              Nível {{ item.minLvl }}
+              <template v-if="item.level_max">à {{ item.maxLvl }}</template>
             </v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
@@ -47,13 +47,13 @@ export default {
   computed: {
     tab: sync('bottomNav/tab'),
     list() {
-      return monsters.filter((e) => e.arch);
+      return monsters.filter((e) => e.idArch);
     },
     filteredList() {
       if (!this.search) return this.list;
       const number = parseInt(this.search);
       if (!isNaN(number)) {
-        return this.list.filter((e) => betweenLvls(number, e.level_min, e.level_max));
+        return this.list.filter((e) => betweenLvls(number, e.minLvl, e.maxLvl));
       }
       const search = this.search.toUpperCase();
       return this.list.filter((e) => e.name.toUpperCase().includes(search));

@@ -47,10 +47,10 @@ export default {
   },
   methods: {
     monsterRarityClass(item) {
-      if (item.arch) return 'rarity-2';
-      if (item.boss) return 'rarity-3';
-      if (item.horda) return 'rarity-1';
-      if (item.ub) return 'rarity-6';
+      if (item.idArch) return 'rarity-2';
+      if (item.idBoss) return 'rarity-3';
+      if (item.idHorde) return 'rarity-1';
+      if (item.idUb) return 'rarity-6';
       return 'rarity-0';
     },
     itemRarityClass(item) {

@@ -118,11 +118,11 @@ export default {
     },
     territory() {
       if (!this.protector) return null;
-      return territoriesModel.find((e) => e.areas?.some((a) => a.id === this.protector.territory));
+      return territoriesModel.find((e) => e.areas?.some((a) => a.id === this.protector.idTerritory));
     },
     area() {
       if (!this.territory) return null;
-      return this.territory.areas.find((a) => a.id === this.protector.territory);
+      return this.territory.areas.find((a) => a.id === this.protector.idTerritory);
     },
     familys() {
       if (!this.protector) return null;

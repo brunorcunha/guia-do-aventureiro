@@ -157,8 +157,8 @@
                 <v-list-item-content v-if="drop.monster" class="py-0" style="z-index: 1">
                   <v-list-item-title>{{ drop.monster.name }}</v-list-item-title>
                   <v-list-item-subtitle>
-                    Nível {{ drop.monster.level_min }}
-                    <template v-if="drop.monster.level_max"> à {{ drop.monster.level_max }}</template>
+                    Nível {{ drop.monster.minLvl }}
+                    <template v-if="drop.monster.maxLvl"> à {{ drop.monster.maxLvl }}</template>
                   </v-list-item-subtitle>
                 </v-list-item-content>
 
@@ -203,7 +203,7 @@
                   </v-list-item-subtitle>
                   <v-list-item-subtitle
                     v-for="itemc in (crupie.item.cost || {}).items"
-                    :key="itemc.itemId"
+                    :key="itemc.id"
                     class="d-flex align-center font-weight-light"
                   >
                     <img :src="`${$baseURL}/items/${itemc.item.gfx}.png`" height="24" alt="" class="mr-1" />
@@ -259,7 +259,7 @@
             <div v-if="page.img" class="align-center">
               <img :src="`${$baseURL}/backgroundDisplay/${page.img}.png`" alt="" style="max-width: 100%" />
             </div>
-            <Pagina :value="page.text" />
+            <Pagina :value="page.txt" />
           </v-card-text>
           <v-card-actions>
             <v-spacer />
@@ -306,11 +306,11 @@ export default {
       return false;
     },
     type() {
-      return equipTypeModel[this.item.type] || this.item.type;
+      return equipTypeModel[this.item.idType] || this.item.idType;
     },
     book() {
-      if (!this.item.book) return null;
-      return booksModel.find((e) => e.id === this.item.book);
+      if (!this.item.idBook) return null;
+      return booksModel.find((e) => e.id === this.item.idBook);
     },
     emote() {
       return emotesModel.find((e) => e.item_id === this.item.id);
@@ -356,9 +356,9 @@ export default {
     },
     crupies() {
       return exchangesModel
-        .filter((e) => e.exchanges.find((f) => f.result.items?.some((g) => g.itemId === this.id)))
+        .filter((e) => e.exchanges.find((f) => f.result.items?.some((g) => g.id === this.id)))
         .map((e) => {
-          const itemc = e.exchanges.find((f) => f.result.items?.some((g) => g.itemId === this.id));
+          const itemc = e.exchanges.find((f) => f.result.items?.some((g) => g.id === this.id));
           return {
             ...e,
             item: {
@@ -369,7 +369,7 @@ export default {
                     items: itemc.cost.items
                       ? itemc.cost.items.map((i) => ({
                           ...i,
-                          item: itemsModel.find((item) => item.id === i.itemId)
+                          item: itemsModel.find((item) => item.id === i.id)
                         }))
                       : undefined
                   }
