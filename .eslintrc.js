@@ -9,6 +9,8 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint'
   },
-  rules: {},
+  rules: {
+    'vue/no-v-html': 'off'
+  },
   overrides: []
 };

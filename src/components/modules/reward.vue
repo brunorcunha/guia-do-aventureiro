@@ -32,15 +32,15 @@ export default {
       return emotes.find((e) => e.id === this.reward.emote);
     },
     titulo() {
-      if (!this.reward.titulo) return null;
-      return titulos.find((e) => e.id === this.reward.titulo);
+      if (!this.reward.title) return null;
+      return titulos.find((e) => e.id === this.reward.title);
     },
     zaap() {
       if (!this.reward.zaap) return null;
       return zaaps[this.reward.zaap];
     },
     label() {
-      if (this.reward.titulo) return `Título: ${this.titulo?.name}`;
+      if (this.reward.title) return `Título: ${this.titulo?.name}`;
       else if (this.reward.poi) return 'Marcador de Mapa';
       else if (this.reward.item) return `${this.reward.item[1]}x ${this.item.name}`;
       else if (this.reward.emote) return this.emote.name;
@@ -54,7 +54,7 @@ export default {
     },
     img() {
       const base = process.env.VUE_APP_BASE_URL;
-      if (this.reward.titulo) return `${base}/rewards/2.png`;
+      if (this.reward.title) return `${base}/rewards/2.png`;
       else if (this.reward.poi) return `${base}/poi/${this.reward.poi}.png`;
       else if (this.reward.item) return `${base}/items/${this.item.gfx}.png`;
       else if (this.reward.emote) return `${base}/emotes/${this.reward.emote}.png`;
@@ -68,7 +68,7 @@ export default {
     },
     link() {
       if (this.reward.item) return `/item/${this.item.id}`;
-      else if (this.reward.titulo) return `/titulo/${this.reward.titulo}`;
+      else if (this.reward.title) return `/titulo/${this.reward.title}`;
       else if (this.reward.emote) return `/emote/${this.emote.id}`;
       return null;
     }

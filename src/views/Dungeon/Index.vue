@@ -118,7 +118,7 @@ export default {
       return territoriesModel.filter((e) => e.id === this.dungeon.idTerritory);
     },
     bosses() {
-      return monsters.filter((m) => (m.idBoss || m.idUb) && m.idFamily === this.dungeon.idBossFamily);
+      return monsters.filter((m) => (m.isBoss || m.isUb) && m.idFamily === this.dungeon.idBossFamily);
     },
     crupie() {
       if (!this.dungeon.idCrupie) return null;

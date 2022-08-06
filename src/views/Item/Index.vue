@@ -313,29 +313,29 @@ export default {
       return booksModel.find((e) => e.id === this.item.idBook);
     },
     emote() {
-      return emotesModel.find((e) => e.item_id === this.item.id);
+      return emotesModel.find((e) => e.id === this.item.id);
     },
     titulo() {
-      return titulosModel.find((e) => e.item_id === this.item.id);
+      return titulosModel.find((e) => e.id === this.item.id);
     },
     receitaCraft() {
       return receitasModel.map((e) => ({
         ...e,
-        craft: craftsModel.find((f) => f.id === e.craft_id)
+        craft: craftsModel.find((f) => f.id === e.idCraft)
       }));
     },
     receita() {
-      return this.receitaCraft.find((e) => e.result.item_id === this.item.id);
+      return this.receitaCraft.find((e) => e.result.id === this.item.id);
     },
     referenciaReceita() {
-      const i = this.receitaCraft.find((e) => e.item_id === this.item.id);
+      const i = this.receitaCraft.find((e) => e.id === this.item.id);
       if (!i) return null;
-      return itemsModel.find((e) => e.id === i.result.item_id);
+      return itemsModel.find((e) => e.id === i.result.id);
     },
     receitaReferencia() {
-      const i = this.receitaCraft.find((e) => e.result.item_id === this.item.id);
+      const i = this.receitaCraft.find((e) => e.result.id === this.item.id);
       if (!i) return null;
-      return itemsModel.find((e) => e.id === i.item_id);
+      return itemsModel.find((e) => e.id === i.id);
     },
     colheitas() {
       if (!this.item) return null;

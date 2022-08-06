@@ -97,7 +97,7 @@ export default {
     },
     item() {
       if (!this.emote) return null;
-      return itemsModel.find((i) => i.id == this.emote.item_id);
+      return itemsModel.find((i) => i.id == this.emote.id);
     },
     missoes() {
       if (!this.emote) return null;

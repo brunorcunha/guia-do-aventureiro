@@ -51,18 +51,18 @@
         <template v-if="monster.maxLvl">à {{ monster.maxLvl }}</template>
       </h2>
       <div class="ml-8">
-        <h2 v-if="monster.arch" class="body-1 font-weight-light rarity-2--text">Arquimonstro</h2>
-        <h2 v-if="monster.boss" class="body-1 font-weight-light rarity-3--text">Chefe de Calabouço</h2>
-        <h2 v-if="monster.horda" class="body-1 font-weight-light rarity-1--text">Horda Ambiental</h2>
-        <h2 v-if="monster.ub" class="body-1 font-weight-light rarity-6--text">Chefe Supremo</h2>
+        <h2 v-if="monster.isArch" class="body-1 font-weight-light rarity-2--text">Arquimonstro</h2>
+        <h2 v-if="monster.isBoss" class="body-1 font-weight-light rarity-3--text">Chefe de Calabouço</h2>
+        <h2 v-if="monster.isHorde" class="body-1 font-weight-light rarity-1--text">Horda Ambiental</h2>
+        <h2 v-if="monster.isUb" class="body-1 font-weight-light rarity-6--text">Chefe Supremo</h2>
 
-        <v-chip v-if="monster.capture" small label outlined color="green" class="mt-1">
+        <v-chip v-if="monster.catch" small label outlined color="green" class="mt-1">
           <img src="@/assets/icon_can_capture.png" class="mr-2" alt="" />
           Capturável
         </v-chip>
       </div>
 
-      <div v-if="!!(monster.local || []).length" class="mt-4">
+      <div v-if="!!(monster.loc || []).length" class="mt-4">
         <h3 class="text-h6">Localização</h3>
         <div v-for="(local, i) in localizacao" :key="i + local">
           <a class="d-flex align-center" @click="$router.push(`/territorio/${local.id}`)">
@@ -77,7 +77,7 @@
         </div>
       </div>
 
-      <v-alert v-if="monster.arch" text dense border="left" type="info" class="mt-4">
+      <v-alert v-if="monster.isArch" text dense border="left" type="info" class="mt-4">
         Frequência de aparecimento: <br />
         {{ frequenciaAparecimento }}
       </v-alert>
@@ -140,11 +140,11 @@ export default {
       else return 'A cada 4 horas';
     },
     localizacao() {
-      if (!this.monster.local) return null;
+      if (!this.monster.loc) return null;
       return territories.filter((e) => this.monster.loc.includes(e.id));
     },
     dungeons() {
-      if (!this.monster.idBoss && !this.monster.idUb) return null;
+      if (!this.monster.isBoss && !this.monster.isUb) return null;
       return dungeonsModel.filter((e) => e.idBossFamily === this.monster.idFamily);
     },
     webShareApiSupported() {

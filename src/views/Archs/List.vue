@@ -47,7 +47,7 @@ export default {
   computed: {
     tab: sync('bottomNav/tab'),
     list() {
-      return monsters.filter((e) => e.idArch);
+      return monsters.filter((e) => e.isArch);
     },
     filteredList() {
       if (!this.search) return this.list;

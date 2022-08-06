@@ -2,14 +2,14 @@
   <v-card v-if="receitaCompleta" outlined rounded="lg" class="mb-4">
     <v-card-text class="py-2">
       <div class="body-1 mb-1 cyan--text font-weight-bold">
-        {{ receitaCompleta.craft.name }} ({{ receitaCompleta.level }})
+        {{ receitaCompleta.craft.name }} ({{ receitaCompleta.lvl }})
       </div>
       <div
         v-for="ingred in receitaCompleta.ingredients"
-        :key="ingred.item_id"
+        :key="ingred.id"
         v-ripple
         class="body-2 d-flex align-center pointer mb-1"
-        @click="$router.push(`/item/${ingred.item_id}`)"
+        @click="$router.push(`/item/${ingred.id}`)"
       >
         <img :src="`${$baseURL}/items/${ingred.item.gfx}.png`" alt="" height="24" class="mx-1" />
         {{ ingred.qnt }}x
@@ -23,6 +23,7 @@
 
 <script>
 import itemsModel from '@/models/items';
+import craftsModel from '@/models/crafts';
 
 export default {
   name: 'Receita',
@@ -37,13 +38,14 @@ export default {
       if (!this.receita) return null;
       return {
         ...this.receita,
+        craft: craftsModel.find((e) => e.id === this.receita.idCraft),
         result: {
           ...this.receita.result,
-          item: itemsModel.find((e) => e.id === this.receita.result.item_id)
+          item: itemsModel.find((e) => e.id === this.receita.result.id)
         },
         ingredients: this.receita.ingredients.map((e) => ({
           ...e,
-          item: itemsModel.find((i) => i.id === e.item_id)
+          item: itemsModel.find((i) => i.id === e.id)
         }))
       };
     }

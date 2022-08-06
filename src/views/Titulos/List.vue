@@ -53,7 +53,7 @@ export default {
       return titulosModel
         .map((e) => ({
           ...e,
-          item: itemsModel.find((i) => i.id == e.item_id)
+          item: itemsModel.find((i) => i.id == e.id)
         }))
         .sort((a, b) => a.name.localeCompare(b.name));
     },

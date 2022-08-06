@@ -56,7 +56,7 @@ export default {
     list() {
       return emotesModel.map((e) => ({
         ...e,
-        item: itemsModel.find((i) => i.id == e.item_id)
+        item: itemsModel.find((i) => i.id == e.id)
       }));
     },
     filteredList() {

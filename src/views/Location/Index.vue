@@ -221,7 +221,7 @@ export default {
         .filter((e) => e.idTerritory === this.territory.id)
         .map((e) => ({
           ...e,
-          boss: monstersModel.find((m) => m.idBoss && m.idFamily === e.family_id)
+          boss: monstersModel.find((m) => m.isBoss && m.idFamily === e.family_id)
         }));
     },
     crupies() {
@@ -243,10 +243,10 @@ export default {
           return {
             id: f,
             family: familysModel.find((m) => m.id === f).name,
-            arch: family_monsters.find((m) => m.idArch),
-            boss: family_monsters.find((m) => m.idBoss),
-            horda: family_monsters.find((m) => m.idHorde),
-            monsters: family_monsters.filter((m) => !m.idBoss && !m.idArch && !m.idHorde)
+            arch: family_monsters.find((m) => m.isArch),
+            boss: family_monsters.find((m) => m.isBoss),
+            horda: family_monsters.find((m) => m.isHorde),
+            monsters: family_monsters.filter((m) => !m.isBoss && !m.isArch && !m.isHorde)
           };
         });
       }

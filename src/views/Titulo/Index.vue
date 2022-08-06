@@ -90,7 +90,7 @@ export default {
     },
     item() {
       if (!this.titulo) return null;
-      return itemsModel.find((i) => i.id == this.titulo.item_id);
+      return itemsModel.find((i) => i.id == this.titulo.idItem);
     },
     missoes() {
       if (!this.titulo) return null;
@@ -123,7 +123,7 @@ export default {
       });
     },
     getRoot(root, ac) {
-      root.conquistas.filter((e) => e.rewards.some((f) => f.titulo == this.id)).forEach((e) => ac.push(e));
+      root.conquistas.filter((e) => e.rewards.some((f) => f.title == this.id)).forEach((e) => ac.push(e));
       (root.children || []).forEach((e) => this.getRoot(e, ac));
     },
     fechar() {

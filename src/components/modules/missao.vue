@@ -13,7 +13,7 @@
           <v-icon v-if="item.repeatable" small>bi-arrow-counterclockwise</v-icon>
         </Tooltip>
         {{ item.name }}
-        <span v-if="!!item.level" class="body-2">(Nível {{ item.level }})</span>
+        <span v-if="!!item.lvl" class="body-2">(Nível {{ item.lvl }})</span>
         <v-chip v-if="tempo" x-small label color="grey darken-4" class="px-2 ml-1">
           <v-icon x-small class="mr-1">bi-clock</v-icon>
           {{ tempo }}
